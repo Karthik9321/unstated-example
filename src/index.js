@@ -6,17 +6,20 @@ import Counter from './components/counter';
 import ReactLoading from 'react-loading';
 
 const Loader = ({ type, color }) => (
-   <ReactLoading type={type} color={color} />
+  <ReactLoading type={type} color={color} />
 );
 
 class ProperListRender extends React.Component {
   render() {
     return (
-      <ul>
-        {this.props.list.map(function(listValue){
-          return <li>{listValue.name}</li>;
-        })}
-      </ul>
+      <section>
+        <h3>Star Wars Characters</h3>
+        <ul>
+          {this.props.list.map(function (listValue) {
+            return <li>{listValue.name}</li>;
+          })}
+        </ul>
+      </section>
     )
   }
 };
@@ -36,12 +39,11 @@ class App extends React.Component {
                 amount.setAmount(parseInt(event.currentTarget.value, 10));
               }}
             />
-            <button onClick={event => {
-              location.fetchLocations();
-              }
-            }>Fetch locations</button>
-            { location.state.isLoading && <Loader color='black'/> }
-            { location.state.locations.length > 0 && <ProperListRender list={location.state.locations} />}
+            <button onClick={event => {location.fetchLocations()}}>Fetch locations</button>
+
+            {location.state.isLoading && <Loader color='black' />}
+            
+            {location.state.locations.length > 0 && <ProperListRender list={location.state.locations} />}
           </div>
         )}
       </Subscribe>
