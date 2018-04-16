@@ -19,7 +19,7 @@ class Amount extends Component {
         <input
           type="number"
           style={styles.inputAreaStyle}
-          value={this.props.amount || 1}
+          value={this.props.amount}
           className="form-control"
           onChange={event => {
             this.modifyAmount(parseInt(event.currentTarget.value, 10));

@@ -13,7 +13,7 @@ class Counter extends Component {
       <div className="container text-center mt-3" style={{paddingTop: 50, marginBottom: 40,}}>
         <p>Count:</p>
         <button type="button" className="btn btn-info" style={styles.buttonRightStyle} onClick={() => this.props.modifyCounter(this.props.count - (this.props.amount ? this.props.amount : 1))}>-</button>
-        <span style={styles.spanStyle}>{this.props.count || 0}</span>        
+        <span style={styles.spanStyle}>{this.props.count}</span>        
         <button type="button" className="btn btn-info" style={styles.buttonLeftStyle} onClick={() => this.props.modifyCounter(this.props.count + (this.props.amount ? this.props.amount : 1))}>+</button>
       </div>);
   }
