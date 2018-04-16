@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider, Subscribe, Container } from 'unstated';
-import { AmountContainer, LocationsContainer } from './containers';
+import { AmountContainer, CharactersContainer } from './containers';
 import Counter from './components/counter';
 import ReactLoading from 'react-loading';
 
@@ -13,10 +13,10 @@ class ProperListRender extends React.Component {
   render() {
     return (
       <section>
-        <h3>Star Wars Characters</h3>
-        <ul>
+        <h4>Star Wars Characters</h4>
+        <ul className="list-group col-sm-5" style={{marginLeft:280}}>
           {this.props.list.map(function (listValue) {
-            return <li>{listValue.name}</li>;
+            return <li className = "list-group-item">{listValue.name}</li>;
           })}
         </ul>
       </section>
@@ -27,8 +27,8 @@ class ProperListRender extends React.Component {
 class App extends React.Component {
   render() {
     return (
-      <Subscribe to={[AmountContainer, LocationsContainer]}>
-        {(amount, location) => (
+      <Subscribe to={[AmountContainer, CharactersContainer]}>
+        {(amount, characters) => (
           <div>
             <Counter />
             <div className="text-center">
@@ -42,11 +42,11 @@ class App extends React.Component {
                   amount.setAmount(parseInt(event.currentTarget.value, 10));
                 }}
               />
-              <button style={styles.buttonStyle} onClick={event => {location.fetchLocations()}}>Fetch locations</button>
+              <button style={styles.buttonStyle} onClick={event => {characters.fetchCharacters()}}>Fetch Characters</button>
 
-              {location.state.isLoading && <Loader color='black' />}
+              {characters.state.isLoading && <Loader color='black' />}
               
-              {location.state.locations.length > 0 && <ProperListRender list={location.state.locations} />}
+              {characters.state.characters.length > 0 && <ProperListRender list={characters.state.characters} />}
             </div>
           </div>
         )}

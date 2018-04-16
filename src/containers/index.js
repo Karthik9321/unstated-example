@@ -1,9 +1,9 @@
 import AmountContainer from './amount';
 import CounterContainer from './counter';
-import LocationsContainer from './locations';
+import CharactersContainer from './characters';
 
 export {
   AmountContainer,
   CounterContainer,
-  LocationsContainer,
+  CharactersContainer,
 };

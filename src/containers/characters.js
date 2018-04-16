@@ -1,15 +1,15 @@
 import { Container } from 'unstated';
 
-export default class LocationsContainer extends Container {
+export default class CharactersContainer extends Container {
   state = {
-    locations: [],
+    characters: [],
     isLoading: false,
     isError: false
   };
 
-  async fetchLocations() {
+  async fetchCharacters() {
     let stateObj = {
-      locations: [],
+      characters: [],
       isLoading: true
     }
     this.setState(stateObj);
@@ -17,7 +17,7 @@ export default class LocationsContainer extends Container {
       const data = await fetch('https://swapi.co/api/people/')
       const json = await data.json()
       stateObj = {
-        locations: json.results,
+        characters: json.results,
         isLoading: false
       }
       this.setState(stateObj);
