@@ -35,14 +35,14 @@ class App extends React.Component {
               <p>Amount: </p>
               <input
                 type="number"
-                style={{maxWidth: 200, height: 25, margin: 'auto', marginBottom: 50,}}
+                style={styles.inputAreaStyle}
                 className="form-control"
                 value={amount.state.amount}
                 onChange={event => {
                   amount.setAmount(parseInt(event.currentTarget.value, 10));
                 }}
               />
-              <button style={{backgroundColor: 'gray', height: 25, color: '#fff',border: 'none', borderRadius: 4, width: 200,}} onClick={event => {location.fetchLocations()}}>Fetch locations</button>
+              <button style={styles.buttonStyle} onClick={event => {location.fetchLocations()}}>Fetch locations</button>
 
               {location.state.isLoading && <Loader color='black' />}
               
@@ -54,6 +54,21 @@ class App extends React.Component {
     );
   }
 }
+const styles = {
+  inputAreaStyle : {
+    maxWidth: 200, 
+    height: 25, 
+    margin: 'auto', 
+    marginBottom: 50
+  },
+  buttonStyle: {
+    backgroundColor: 'gray', 
+    height: 25, color: '#fff',
+    border: 'none', 
+    borderRadius: 4, 
+    width: 200
+  }
+}
 
 render(
   <Provider>
@@ -61,3 +76,4 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
