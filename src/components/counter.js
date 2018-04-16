@@ -1,38 +1,33 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {modifyCounter} from '../actions';
-import {bindActionCreators} from 'redux';
 
-class Counter extends Component {
+export default class Counter extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      count : 0
+    }
+  }
+
+  increment = () => {
+    this.setState({count: this.state.count + 1});
+  }
+
+  decrement = () => {
+    this.setState({count: this.state.count - 1});
   }
 
   render() {
     return(
       <div className="container text-center mt-3" style={{paddingTop: 50, marginBottom: 40,}}>
         <p>Count:</p>
-        <button type="button" className="btn btn-info" style={styles.buttonRightStyle} onClick={() => this.props.modifyCounter(this.props.count - (this.props.amount ? this.props.amount : 1))}>-</button>
-        <span style={styles.spanStyle}>{this.props.count}</span>        
-        <button type="button" className="btn btn-info" style={styles.buttonLeftStyle} onClick={() => this.props.modifyCounter(this.props.count + (this.props.amount ? this.props.amount : 1))}>+</button>
-      </div>);
+        <button type="button" className="btn btn-info" style={styles.buttonRightStyle} onClick={this.decrement}>-</button>
+        <span style={styles.spanStyle}>{this.state.count}</span>        
+        <button type="button" className="btn btn-info" style={styles.buttonLeftStyle} onClick={this.increment}>+</button>
+      </div>
+    );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    count: state.count,
-    amount: state.amount
-  };
-}
   
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({modifyCounter: modifyCounter}, dispatch);
-}
-  
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
-
-
 const styles = {
   buttonRightStyle: {
     marginRight: 30, 
