@@ -14,11 +14,13 @@ class Amount extends Component {
 
   render() {
     return (
-      <div>
-        <label>Amount: </label>
+      <div className="text-center">
+        <p>Amount: </p>
         <input
           type="number"
+          style={styles.inputAreaStyle}
           value={this.props.amount || 1}
+          className="form-control"
           onChange={event => {
             this.modifyAmount(parseInt(event.currentTarget.value, 10));
           }}
@@ -38,3 +40,21 @@ class Amount extends Component {
   }
   
   export default connect(mapStateToProps, mapDispatchToProps)(Amount)
+
+  const styles = {
+    inputAreaStyle : {
+      maxWidth: 200, 
+      height: 25, 
+      margin: 'auto', 
+      marginBottom: 50
+    },
+    buttonStyle: {
+      backgroundColor: 'gray', 
+      height: 25, color: '#fff',
+      border: 'none', 
+      borderRadius: 4, 
+      width: 200
+    }
+  }
+  
+  
