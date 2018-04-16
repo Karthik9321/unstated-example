@@ -31,19 +31,23 @@ class App extends React.Component {
         {(amount, location) => (
           <div>
             <Counter />
-            <label>Amount: </label>
-            <input
-              type="number"
-              value={amount.state.amount}
-              onChange={event => {
-                amount.setAmount(parseInt(event.currentTarget.value, 10));
-              }}
-            />
-            <button onClick={event => {location.fetchLocations()}}>Fetch locations</button>
+            <div className="text-center">
+              <p>Amount: </p>
+              <input
+                type="number"
+                style={{maxWidth: 200, height: 25, margin: 'auto', marginBottom: 50,}}
+                className="form-control"
+                value={amount.state.amount}
+                onChange={event => {
+                  amount.setAmount(parseInt(event.currentTarget.value, 10));
+                }}
+              />
+              <button style={{backgroundColor: 'gray', height: 25, color: '#fff',border: 'none', borderRadius: 4, width: 200,}} onClick={event => {location.fetchLocations()}}>Fetch locations</button>
 
-            {location.state.isLoading && <Loader color='black' />}
-            
-            {location.state.locations.length > 0 && <ProperListRender list={location.state.locations} />}
+              {location.state.isLoading && <Loader color='black' />}
+              
+              {location.state.locations.length > 0 && <ProperListRender list={location.state.locations} />}
+            </div>
           </div>
         )}
       </Subscribe>

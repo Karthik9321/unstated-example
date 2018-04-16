@@ -6,20 +6,12 @@ export default class LocationsContainer extends Container {
     isLoading: false,
     isError: false
   };
-  
-  doDumbShit(){
-    console.log(this,'this');
-    this.setState({
-      isError: !this.state.isError
-    });
-  }
-  
+
   async fetchLocations() {
     let stateObj = {
       locations: [],
       isLoading: true
     }
-    // console.log(JSON.stringify(stateObj), 'stateObjBefore');
     this.setState(stateObj);
     try {
       const data = await fetch('https://swapi.co/api/people/')
@@ -28,7 +20,6 @@ export default class LocationsContainer extends Container {
         locations: json.results,
         isLoading: false
       }
-      // console.log(JSON.stringify(stateObj), 'stateObjAfter');
       this.setState(stateObj);
     } catch (err) {
       this.setState({
@@ -36,7 +27,6 @@ export default class LocationsContainer extends Container {
         isError: true,
         error: err,
       })
-      console.log('error: ', err)
     }
   }
 }
