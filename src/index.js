@@ -14,7 +14,7 @@ class ProperListRender extends React.Component {
     return (
       <section>
         <h4>Star Wars Characters</h4>
-        <ul className="list-group col-sm-5" style={{marginLeft:280}}>
+        <ul className="list-group col-sm-5" style={{marginLeft:325}}>
           {this.props.list.map(function (listValue) {
             return <li className = "list-group-item">{listValue.name}</li>;
           })}
