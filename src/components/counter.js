@@ -4,10 +4,6 @@ import {modifyCounter} from '../actions';
 import {bindActionCreators} from 'redux';
 
 class Counter extends Component {
-  constructor(props){
-    super(props);
-  }
-
   render() {
     return(
       <div className="container text-center mt-3" style={{paddingTop: 50, marginBottom: 40,}}>

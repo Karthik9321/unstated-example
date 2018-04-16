@@ -4,10 +4,6 @@ import {modifyAmount} from '../actions';
 import {bindActionCreators} from 'redux';
 
 class Amount extends Component {
-  constructor(props){
-    super(props);
-  }
-
   modifyAmount(amount) {
     this.props.modifyAmount(amount);
   }
